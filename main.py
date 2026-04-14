@@ -12,6 +12,36 @@ def cadastrar():
     clientes.append(cliente)
     print("Cliente cadastrado com sucesso!")
 
+def editar():
+    if not clientes:
+        print("Nenhum cliente para editar.")
+        return
+
+    listar()
+
+    try:
+        indice = int(input("Digite o número do cliente que deseja editar: "))
+
+        if indice < 1 or indice > len(clientes):
+            print("Índice inválido.")
+            return
+
+        cliente = clientes[indice - 1]
+
+        novo_nome = input(f"Novo nome ({cliente['nome']}): ")
+        novo_telefone = input(f"Novo telefone ({cliente['telefone']}): ")
+
+        if novo_nome:
+            cliente['nome'] = novo_nome
+
+        if novo_telefone:
+            cliente['telefone'] = novo_telefone
+
+        print("Cliente atualizado com sucesso!")
+
+    except ValueError:
+        print("Digite apenas números.")
+
 def listar():
     if not clientes:
         print("Nenhum cliente cadastrado.")
@@ -57,6 +87,8 @@ while True:
         break
     elif opcao == 1:
         cadastrar()
+    elif opcao == 2:
+        editar()
     elif opcao == 3:
         listar()
     elif opcao == 4:
