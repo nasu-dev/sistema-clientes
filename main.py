@@ -1,5 +1,17 @@
 clientes = []
 
+def cadastrar():
+    nome = input("Digite o nome: ")
+    telefone = input("Digite o telefone: ")
+
+    cliente = {
+        "nome": nome,
+        "telefone": telefone
+    }
+
+    clientes.append(cliente)
+    print("Cliente cadastrado com sucesso!")
+
 def listar():
     if not clientes:
         print("Nenhum cliente cadastrado.")
@@ -23,5 +35,7 @@ while True:
 
     if opcao == 0:
         break
+    elif opcao == 1:
+        cadastrar()
     elif opcao == 3:
         listar()
