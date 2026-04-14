@@ -1,5 +1,12 @@
 clientes = []
 
+def listar():
+    if not clientes:
+        print("Nenhum cliente cadastrado.")
+    else:
+        for i, cliente in enumerate(clientes, start=1):
+            print(f"{i} - {cliente['nome']} | {cliente['telefone']}")
+
 while True:
     print("Bem vindo a *Clientes*")
     print("1 - Cadastrar Clientes")
@@ -16,3 +23,5 @@ while True:
 
     if opcao == 0:
         break
+    elif opcao == 3:
+        listar()
