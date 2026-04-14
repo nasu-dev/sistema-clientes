@@ -19,6 +19,26 @@ def listar():
         for i, cliente in enumerate(clientes, start=1):
             print(f"{i} - {cliente['nome']} | {cliente['telefone']}")
 
+def excluir():
+    if not clientes:
+        print("Nenhum cliente para excluir.")
+        return
+
+    listar()
+
+    try:
+        indice = int(input("Digite o número do cliente que deseja excluir: "))
+
+        if indice < 1 or indice > len(clientes):
+            print("Índice inválido.")
+            return
+
+        cliente_removido = clientes.pop(indice - 1)
+        print(f"{cliente_removido['nome']} removido com sucesso!")
+
+    except ValueError:
+        print("Digite apenas números.")
+
 while True:
     print("Bem vindo a *Clientes*")
     print("1 - Cadastrar Clientes")
@@ -39,3 +59,5 @@ while True:
         cadastrar()
     elif opcao == 3:
         listar()
+    elif opcao == 4:
+        excluir()
