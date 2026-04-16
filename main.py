@@ -1,4 +1,18 @@
+import json
+
 clientes = []
+
+def salvar():
+    with open("clientes.json", "w") as arquivo:
+        json.dump(clientes, arquivo, indent=4)
+
+def carregar():
+    global clientes
+    try:
+        with open("clientes.json", "r") as arquivo:
+            clientes = json.load(arquivo)
+    except FileNotFoundError:
+        clientes = []
 
 def cadastrar():
     nome = input("Digite o nome: ").strip()
@@ -18,6 +32,7 @@ def cadastrar():
     }
 
     clientes.append(cliente)
+    salvar()
     print("Cliente cadastrado com sucesso!")
 
 def listar():
@@ -51,7 +66,7 @@ def editar():
 
         if novo_telefone:
             cliente['telefone'] = novo_telefone
-
+        salvar()
         print("Cliente atualizado com sucesso!")
 
     except ValueError:
@@ -72,10 +87,13 @@ def excluir():
             return
 
         cliente_removido = clientes.pop(indice - 1)
+        salvar()
         print(f"{cliente_removido['nome']} removido com sucesso!")
 
     except ValueError:
         print("Digite apenas números.")
+
+carregar()
 
 while True:
     print("==== Sistema de Clientes ====")
