@@ -1,8 +1,16 @@
 clientes = []
 
 def cadastrar():
-    nome = input("Digite o nome: ")
-    telefone = input("Digite o telefone: ")
+    nome = input("Digite o nome: ").strip()
+    telefone = input("Digite o telefone: ").strip()
+
+    if not nome:
+        print("Nome não pode ser vazio.")
+        return
+
+    if not telefone:
+        print("Telefone não pode ser vazio.")
+        return
 
     cliente = {
         "nome": nome,
