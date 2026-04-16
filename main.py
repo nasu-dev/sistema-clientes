@@ -12,6 +12,13 @@ def cadastrar():
     clientes.append(cliente)
     print("Cliente cadastrado com sucesso!")
 
+def listar():
+    if not clientes:
+        print("Nenhum cliente cadastrado.")
+    else:
+        for i, cliente in enumerate(clientes, start=1):
+            print(f"{i} - {cliente['nome']} | {cliente['telefone']}")
+
 def editar():
     if not clientes:
         print("Nenhum cliente para editar.")
@@ -42,13 +49,6 @@ def editar():
     except ValueError:
         print("Digite apenas números.")
 
-def listar():
-    if not clientes:
-        print("Nenhum cliente cadastrado.")
-    else:
-        for i, cliente in enumerate(clientes, start=1):
-            print(f"{i} - {cliente['nome']} | {cliente['telefone']}")
-
 def excluir():
     if not clientes:
         print("Nenhum cliente para excluir.")
@@ -70,11 +70,11 @@ def excluir():
         print("Digite apenas números.")
 
 while True:
-    print("Bem vindo a *Clientes*")
+    print("==== Sistema de Clientes ====")
     print("1 - Cadastrar Clientes")
     print("2 - Editar Clientes")
     print("3 - Listar Clientes")
-    print("4 - Excluir clientes")
+    print("4 - Excluir Clientes")
     print("0 - Sair")
 
     try:
